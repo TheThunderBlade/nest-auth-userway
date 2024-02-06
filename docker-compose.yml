@@ -1,0 +1,57 @@
+version: '3.0'
+
+services:
+  main:
+    container_name: main
+    build:
+      context: .
+    env_file:
+      - .prod.env
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - 5000:5000
+      - 9229:9229
+    command: npm run start
+    depends_on:
+      - postgres
+      - redis 
+    restart: always
+
+  postgres:
+    container_name: postgres
+    image: postgres:12
+    env_file:
+      - .prod.env
+    environment:
+      PG_DATA: /var/lib/postgresql/data
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+  migrations:
+    build: 
+      context: .
+    command: npx sequelize-cli db:migrate
+    links:
+      - postgres
+    depends_on:
+      - postgres
+    env_file:
+      - .prod.env
+    environment:
+      - DB_HOST=localhost
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    ports:
+      - 6379:6379
+    restart: always
+
+volumes:
+  pgdata:

@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "99558fb2-256f-4420-9574-ce7225445491",
+		"name": "userway-auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15230320",
+		"_collection_link": "https://crimson-meadow-147340.postman.co/workspace/Kiseki~f491b42e-c1a0-4bd7-a858-6423dea9f0fd/collection/15230320-99558fb2-256f-4420-9574-ce7225445491?action=share&source=collection_link&creator=15230320"
+	},
+	"item": [
+		{
+			"name": "SignUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"qwerqw2@gmail.com\",\r\n    \"password\": \"11111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/auth/signUp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"signUp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SignIn",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"qwerqw2@gmail.com\",\r\n    \"password\": \"11111\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/auth/signIn",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"signIn"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Guarded]SignOut",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicXdlcnF3MkBnbWFpbC5jb20iLCJpYXQiOjE3MDcxODMxMjQsImV4cCI6MTcwNzE4NDkyNH0.VeHo5foIBIQ6sb9aklHGrGeQ_qZrjAt-EguNBkiCr-4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/auth/signOut",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"signOut"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Guarded]getOneUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoicXdlcnF3MkBnbWFpbC5jb20iLCJpYXQiOjE3MDcxODMxMjQsImV4cCI6MTcwNzE4NDkyNH0.VeHo5foIBIQ6sb9aklHGrGeQ_qZrjAt-EguNBkiCr-4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/users/getOne",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"users",
+						"getOne"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "[Guarded]RefreshToken",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwiaWF0IjoxNzA3MTY4Mjg2LCJleHAiOjE3MDcxNzAwODZ9.1mdJHUGH4Ods-KE-UX09KsSb-K2Ao_Kk_S69jCZSz5I",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/auth/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
